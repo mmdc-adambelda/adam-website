@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  trailingSlash: true,
+  basePath: process.env.GITHUB_ACTIONS === "true" ? "/adam-website" : "",
+  typescript: {
+    // The GitHub Pages export does not execute the Cloudflare Worker modules.
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
