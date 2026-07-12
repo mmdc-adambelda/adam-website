@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     // The GitHub Pages export does not execute the Cloudflare Worker modules.
     ignoreBuildErrors: true,
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

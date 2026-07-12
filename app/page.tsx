@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { articles } from "./content";
+import adamPhoto from "./adam-belda.jpg";
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
@@ -8,127 +10,145 @@ export default function Home() {
 
   return (
     <main>
-      <header className="site-header shell">
-        <Link className="brand" href="/" aria-label="Adam Belda home">
-          <span className="brand-mark">AB</span>
-          <span className="brand-name">Adam Belda</span>
-        </Link>
+      <section className="hero" id="top">
+        <header className="site-header shell">
+          <Link className="brand" href="/" aria-label="Adam Belda home">
+            <span className="brand-mark">AB<span>.</span></span>
+          </Link>
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            <a href="#about">About</a>
+            <a href="#journal">Journal</a>
+            <a href="#topics">Topics</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a className="menu-link" href="#contact">Let&apos;s talk <Arrow /></a>
+        </header>
 
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#journal">Journal</a>
-          <a href="#about">About</a>
-          <a href="#connect">Connect</a>
-        </nav>
-
-        <a className="header-cta" href="#connect">
-          Let&apos;s talk <Arrow />
-        </a>
-      </header>
-
-      <section className="hero shell" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <p className="eyebrow"><span /> Manila, Philippines · Online</p>
-          <h1 id="hero-title">Tech, taste &amp; a life<br />well <em>designed.</em></h1>
-          <p className="hero-intro">
-            I&apos;m Adam—a digital marketer, tech enthusiast, and curious human
-            sharing honest takes on the gear, games, places, and ideas worth
-            making time for.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#journal">Explore the journal <Arrow /></a>
-            <a className="text-link" href="#about">More about Adam <span aria-hidden="true">↓</span></a>
+        <div className="hero-inner shell">
+          <p className="availability"><i /> Available for stories &amp; collaborations</p>
+          <h1>ADAM BELDA</h1>
+          <div className="hero-stage">
+            <div className="hero-note hero-note-left">
+              <span>01 / MANILA</span>
+              <p>Digital marketer.<br />Curious human.<br />Useful storyteller.</p>
+            </div>
+            <div className="portrait-frame">
+              <div className="portrait-orbit" />
+              <div className="portrait-grid" />
+              <Image className="portrait-photo" src={adamPhoto} alt="Adam Belda" priority sizes="(max-width: 700px) 100vw, 570px" />
+              <small>EST. 2018</small>
+            </div>
+            <div className="hero-note hero-note-right">
+              <div className="mini-avatars"><b>AB</b><b>TC</b><b>ML</b></div>
+              <p><strong>Tech, taste &amp; real life.</strong><br />Field notes without the borrowed hype.</p>
+            </div>
           </div>
-        </div>
-
-        <div className="hero-visual" aria-label="Adam Belda editorial monogram">
-          <div className="signal signal-one" />
-          <div className="signal signal-two" />
-          <div className="hero-grid" />
-          <div className="monogram">A<span>/</span>B</div>
-          <p className="visual-label">Digital culture<br />in real life</p>
-          <p className="visual-index">EST. 2018<br />14.5995° N</p>
+          <div className="role-strip">
+            <span>TECHNOLOGY</span><i /> <span>GAMING</span><i /> <span>FOOD &amp; PLACES</span><i /> <span>DIGITAL CULTURE</span>
+          </div>
         </div>
       </section>
 
-      <section className="ticker" aria-label="Topics covered">
-        <div>
-          <span>Consumer tech</span><i>✦</i><span>Modern living</span><i>✦</i>
-          <span>Gaming culture</span><i>✦</i><span>Food &amp; places</span><i>✦</i>
-          <span>Digital marketing</span><i>✦</i>
+      <section className="intro" id="about">
+        <div className="shell intro-grid">
+          <div className="section-tag"><span>02</span> About Adam</div>
+          <div className="intro-copy">
+            <h2>I FOLLOW CURIOSITY<br />WHEREVER IT <em>LEADS.</em></h2>
+            <p className="intro-lead">I write where technology, culture, and everyday life overlap—turning firsthand experiences into useful stories.</p>
+            <div className="intro-columns">
+              <p>From trying a new game to finding a table worth the drive, every article starts with the same question: is this genuinely worth your time?</p>
+              <p>This journal is a living archive of what I&apos;m testing, learning, eating, and noticing from Manila and beyond.</p>
+            </div>
+          </div>
+          <div className="intro-stamp">
+            <span>WRITE / TEST / EXPLORE /</span>
+            <strong>AB</strong>
+          </div>
         </div>
       </section>
 
-      <section className="journal shell" id="journal" aria-labelledby="journal-title">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow"><span /> Fresh from the feed</p>
-            <h2 id="journal-title">Latest field notes</h2>
+      <section className="topics" id="topics">
+        <div className="shell">
+          <div className="section-heading dark-heading">
+            <div className="section-tag"><span>03</span> What I cover</div>
+            <h2>STORIES BUILT<br />FOR REAL LIFE.</h2>
           </div>
-          <p>Thoughtful reads for people who want their tech useful, their weekends memorable, and their feeds less noisy.</p>
-        </div>
-
-        <article className="featured-card">
-          <div className={`article-art art-${featured.art}`}>
-            <span className="art-code">{featured.code}</span>
-            <div className="art-orbit" />
-            <strong>{featured.artLabel}</strong>
+          <div className="topic-grid">
+            {[
+              ["01", "TECH & GEAR", "Hands-on thoughts about the devices and digital tools that earn a place in everyday routines."],
+              ["02", "GAMING CULTURE", "First impressions, events, and the communities shaping how people play in the Philippines."],
+              ["03", "FOOD & PLACES", "Honest field notes from memorable tables, weekends away, and places worth the trip."],
+              ["04", "DIGITAL LIFE", "Ideas from marketing, online culture, and the constant work of living well with technology."],
+            ].map(([number, title, copy]) => (
+              <article className="topic-card" key={number}>
+                <div><span>{number}</span><b><Arrow /></b></div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
           </div>
-          <div className="featured-copy">
-            <p className="article-meta"><span>{featured.category}</span>{featured.date} · {featured.readTime}</p>
-            <h3><Link href={`/${featured.slug}`}>{featured.title}</Link></h3>
-            <p>{featured.excerpt}</p>
-            <Link className="read-link" href={`/${featured.slug}`}>Read field note <Arrow /></Link>
-          </div>
-        </article>
-
-        <div className="article-grid">
-          {moreArticles.map((article) => (
-            <article className="article-card" key={article.slug}>
-              <div className={`article-art art-${article.art}`}>
-                <span className="art-code">{article.code}</span>
-                <div className="art-orbit" />
-                <strong>{article.artLabel}</strong>
-              </div>
-              <p className="article-meta"><span>{article.category}</span>{article.date}</p>
-              <h3><Link href={`/${article.slug}`}>{article.title}</Link></h3>
-              <p>{article.excerpt}</p>
-              <Link className="read-link" href={`/${article.slug}`}>Read story <Arrow /></Link>
-            </article>
-          ))}
         </div>
       </section>
 
-      <section className="about shell" id="about" aria-labelledby="about-title">
-        <div className="about-index">01<span>/</span>ABOUT</div>
-        <div className="about-copy">
-          <p className="eyebrow"><span /> Behind the screen</p>
-          <h2 id="about-title">Curiosity is the operating system.</h2>
-          <p className="about-lead">I work where technology, storytelling, and everyday life overlap.</p>
-          <div className="about-columns">
-            <p>From reviewing a new game to finding a table worth the drive, I write from experience—clear, useful, and with no borrowed hype.</p>
-            <p>This journal is a running log of what I&apos;m learning, testing, eating, and thinking about from Manila and beyond.</p>
+      <section className="marquee" aria-label="Adam's editorial themes">
+        <div>TECH WITH PURPOSE <span>✳</span> LIFE WITH TASTE <span>✳</span> STORIES WITH SIGNAL <span>✳</span></div>
+      </section>
+
+      <section className="journal" id="journal">
+        <div className="shell">
+          <div className="section-heading">
+            <div className="section-tag"><span>04</span> Latest journal</div>
+            <div>
+              <h2>RECENT FIELD<br />NOTES.</h2>
+              <p>Ideas, reviews, and useful discoveries from Adam&apos;s corner of the internet.</p>
+            </div>
           </div>
-        </div>
-        <div className="about-stats" aria-label="Adam's interests">
-          <div><strong>06+</strong><span>Years writing online</span></div>
-          <div><strong>05</strong><span>Core topics explored</span></div>
-          <div><strong>∞</strong><span>Things left to learn</span></div>
+
+          <article className="featured-story">
+            <Link className={`story-art art-${featured.art}`} href={`/${featured.slug}`} aria-label={`Read ${featured.title}`}>
+              <span>{featured.code}</span>
+              <div className="story-ring" />
+              <strong>{featured.artLabel}</strong>
+            </Link>
+            <div className="featured-copy">
+              <p className="story-meta">{featured.category} <span>/</span> {featured.date}</p>
+              <h3><Link href={`/${featured.slug}`}>{featured.title}</Link></h3>
+              <p>{featured.excerpt}</p>
+              <Link className="circle-link" href={`/${featured.slug}`} aria-label="Read featured story"><Arrow /></Link>
+            </div>
+          </article>
+
+          <div className="story-grid">
+            {moreArticles.map((article, index) => (
+              <article className="story-card" key={article.slug}>
+                <Link className={`story-art art-${article.art}`} href={`/${article.slug}`}>
+                  <span>{article.code}</span><div className="story-ring" /><strong>{article.artLabel}</strong>
+                </Link>
+                <p className="story-meta">0{index + 2} / {article.category}</p>
+                <h3><Link href={`/${article.slug}`}>{article.title}</Link></h3>
+                <Link className="text-arrow" href={`/${article.slug}`}>Read story <Arrow /></Link>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="connect shell" id="connect" aria-labelledby="connect-title">
-        <p className="eyebrow"><span /> Open channel</p>
-        <h2 id="connect-title">Have a story, product,<br />or place I should know?</h2>
-        <p>Collaborations, event invites, product reviews, or just a good recommendation—my inbox is open.</p>
-        <a className="button button-light" href="mailto:hello@adambelda.net">hello@adambelda.net <Arrow /></a>
-        <div className="connect-orbit orbit-a" /><div className="connect-orbit orbit-b" />
+      <section className="contact" id="contact">
+        <div className="shell contact-inner">
+          <div className="section-tag"><span>05</span> Open channel</div>
+          <h2>HAVE SOMETHING<br />WORTH <em>SHARING?</em></h2>
+          <div className="contact-row">
+            <p>Products, events, good food, useful ideas—if it fits the journal, Adam wants to hear about it.</p>
+            <a className="contact-button" href="mailto:hello@adambelda.net">Start a conversation <Arrow /></a>
+          </div>
+        </div>
       </section>
 
       <footer className="footer shell">
-        <Link className="brand" href="/"><span className="brand-mark">AB</span><span className="brand-name">Adam Belda</span></Link>
+        <Link className="brand" href="/"><span className="brand-mark">AB<span>.</span></span></Link>
         <p>Technology, lifestyle, and useful curiosity.<br />Made in Manila.</p>
-        <div><a href="#journal">Journal</a><a href="#about">About</a><a href="mailto:hello@adambelda.net">Email</a></div>
-        <a className="back-top" href="#top" aria-label="Back to top">↑</a>
+        <nav><a href="#about">About</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav>
+        <a className="back-top" href="#top">Back to top ↑</a>
       </footer>
     </main>
   );
