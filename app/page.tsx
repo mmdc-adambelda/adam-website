@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import { articles } from "./content";
-import adamPhoto from "./adam-belda.jpg";
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 export default function Home() {
   const [featured, ...moreArticles] = articles;
+  const basePath = process.env.GITHUB_ACTIONS === "true" ? "/adam-website" : "";
 
   return (
     <main>
@@ -35,7 +34,7 @@ export default function Home() {
             <div className="portrait-frame">
               <div className="portrait-orbit" />
               <div className="portrait-grid" />
-              <Image className="portrait-photo" src={adamPhoto} alt="Adam Belda" priority sizes="(max-width: 700px) 100vw, 570px" />
+              <img className="portrait-photo" src={`${basePath}/adam-belda.jpg`} alt="Adam Belda" />
               <small>EST. 2018</small>
             </div>
             <div className="hero-note hero-note-right">
